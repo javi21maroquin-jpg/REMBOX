@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tumba Virtual - Recordar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="btn-volver">← Volver al buscador</a>
+            <h1>🕯️ En memoria de</h1>
+        </header>
+
+        <main>
+            <!-- Tumba Virtual (Canvas) -->
+            <div class="tumba-container">
+                <canvas id="tumbaCanvas" width="500" height="600"></canvas>
+            </div>
+
+            <!-- Información y acciones -->
+            <div class="info-persona" id="info-persona">
+                <h2 id="nombre-display">Cargando...</h2>
+                <p id="fechas-display"></p>
+                <p id="epitafio-display" class="epitafio"></p>
+            </div>
+
+            <div class="biografia">
+                <h3>📖 Biografía</h3>
+                <p id="biografia-display">Cargando...</p>
+            </div>
+
+            <!-- Sección de flores -->
+            <div class="flores-section">
+                <h3>🌸 Flores dejadas</h3>
+                <div class="contador-flores">
+                    <span id="flores-contador">0</span> flores
+                </div>
+                <div class="flores-container" id="flores-container"></div>
+                <button onclick="dejarFlor()" class="btn-flor">🌷 Dejar una flor</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

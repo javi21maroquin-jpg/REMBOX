@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Memorial - Recordar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="btn-volver">← Volver</a>
+            <h1>➕ Crear tumba virtual</h1>
+        </header>
+
+        <main>
+            <form id="form-crear" >
+                <div class="form-group">
+                    <label>Nombre completo *</label>
+                    <input type="text" id="nombre" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Fecha de nacimiento</label>
+                        <input type="date" id="fecha_nac">
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha de defunción</label>
+                        <input type="date" id="fecha_def">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Epitafio o frase</label>
+                    <input type="text" id="epitafio" placeholder="Ej: Siempre en nuestros corazones">
+                </div>
+
+                <div class="form-group">
+                    <label>Biografía</label>
+                    <textarea id="biografia" rows="4" placeholder="Escribe una breve historia de su vida..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Foto de la persona</label>
+                    <input type="file" id="foto" accept="image/*">
+                </div>
+
+                <button type="submit" class="btn-guardar">💾 Crear Memorial</button>
+            </form>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

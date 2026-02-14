@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recordar - Cementerio Virtual</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🕯️ RECORDAR</h1>
+            <p class="subtitulo">Cementerio Virtual y Memorial Digital</p>
+        </header>
+
+        <main>
+            <div class="buscador-principal">
+                <h2>Busca a un ser querido</h2>
+                <div class="search-box">
+                    <input type="text" id="busqueda" placeholder="Ej: María González Pérez" autocomplete="off">
+                    <button onclick="buscarPersona()">🔍 Buscar</button>
+                </div>
+                <div id="resultados-busqueda" class="resultados"></div>
+            </div>
+
+            <div class="accion-crear">
+                <p>¿No encuentras a quien buscas?</p>
+                <a href="crear.html" class="btn-crear">➕ Crear nueva tumba virtual</a>
+            </div>
+        </main>
+
+        <footer>
+            <p>En memoria de quienes ya no están 🌹</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
