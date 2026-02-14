@@ -12,21 +12,49 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    const { id, flor } = JSON.parse(event.body);
-    const store = getStore('memoriales');
+    // Solo aceptar POST
+    if (event.httpMethod !== 'POST') {
+      return {
+        statusCode: 405,
+        headers,
+        body: JSON.stringify({ error: 'Método no permitido' })
+      };
+    }
     
+    const { id, flor } = JSON.parse(event.body);
+    
+    if (!id || !flor) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: 'Se requiere id y flor' })
+      };
+    }
+    
+    const store = getStore({
+      name: 'memoriales',
+      siteID: process.env.SITE_ID,
+      token: process.env.NETLIFY_ACCESS_TOKEN
+    });
+    
+    // Obtener el memorial existente
     const memorial = await store.get(id, { type: 'json' });
     
     if (!memorial) {
       return {
         statusCode: 404,
         headers,
-        body: JSON.stringify({ error: 'No encontrado' })
+        body: JSON.stringify({ error: 'Memorial no encontrado' })
       };
     }
     
+    // Añadir la nueva flor
+    if (!memorial.flores) {
+      memorial.flores = [];
+    }
     memorial.flores.push(flor);
     
+    // Guardar el memorial actualizado
     await store.setJSON(id, memorial);
     
     return {
@@ -35,6 +63,7 @@ exports.handler = async (event, context) => {
       body: JSON.stringify(memorial)
     };
   } catch (error) {
+    console.error('Error en addFlor:', error);
     return {
       statusCode: 500,
       headers,

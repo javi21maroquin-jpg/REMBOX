@@ -12,8 +12,22 @@ exports.handler = async (event, context) => {
   }
 
   try {
+    // Obtener el ID de la query string
     const id = event.queryStringParameters.id;
-    const store = getStore('memoriales');
+    
+    if (!id) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: 'Se requiere un ID' })
+      };
+    }
+    
+    const store = getStore({
+      name: 'memoriales',
+      siteID: process.env.SITE_ID,
+      token: process.env.NETLIFY_ACCESS_TOKEN
+    });
     
     const memorial = await store.get(id, { type: 'json' });
     
@@ -31,6 +45,7 @@ exports.handler = async (event, context) => {
       body: JSON.stringify(memorial)
     };
   } catch (error) {
+    console.error('Error en getMemorial:', error);
     return {
       statusCode: 500,
       headers,

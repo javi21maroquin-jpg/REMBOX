@@ -12,17 +12,42 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    const data = JSON.parse(event.body);
-    const store = getStore('memoriales');
+    // Solo aceptar POST
+    if (event.httpMethod !== 'POST') {
+      return {
+        statusCode: 405,
+        headers,
+        body: JSON.stringify({ error: 'Método no permitido' })
+      };
+    }
     
+    const data = JSON.parse(event.body);
+    
+    // Validar que tenga nombre
+    if (!data.nombre) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: 'El nombre es obligatorio' })
+      };
+    }
+    
+    const store = getStore({
+      name: 'memoriales',
+      siteID: process.env.SITE_ID,
+      token: process.env.NETLIFY_ACCESS_TOKEN
+    });
+    
+    // Generar ID único usando timestamp
     const id = Date.now().toString();
     const memorial = {
       id,
       ...data,
-      flores: [],
+      flores: data.flores || [],
       creado: new Date().toISOString()
     };
     
+    // Guardar en Netlify Blobs
     await store.setJSON(id, memorial);
     
     return {
@@ -31,6 +56,7 @@ exports.handler = async (event, context) => {
       body: JSON.stringify(memorial)
     };
   } catch (error) {
+    console.error('Error en createMemorial:', error);
     return {
       statusCode: 500,
       headers,
