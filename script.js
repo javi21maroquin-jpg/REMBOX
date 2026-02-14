@@ -152,7 +152,7 @@ function dibujarTumba(persona) {
   const tumbaX = 100;
   const tumbaY = 200;
   const tumbaAncho = 300;
-  const tumbaAlto = 250;
+  const tumbaAlto = 350;
   
   // Césped
   ctx.fillStyle = '#2d5a27';
