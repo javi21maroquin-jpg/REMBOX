@@ -158,7 +158,7 @@ function dibujarTumba(persona) {
   ctx.fillStyle = '#2d5a27';
   ctx.fillRect(0, 500, canvas.width, 100);
   
-  // Sombra
+  // SOMBRA SOLO PARA LA TUMBA (no para el texto)
   ctx.shadowColor = '#000';
   ctx.shadowBlur = 10;
   ctx.shadowOffsetY = 5;
@@ -174,7 +174,6 @@ function dibujarTumba(persona) {
   ctx.strokeRect(tumbaX, tumbaY, tumbaAncho, tumbaAlto);
   
   // Marco para foto
-  ctx.shadowBlur = 5;
   ctx.fillStyle = '#D3D3D3';
   const fotoX = tumbaX + tumbaAncho / 2;
   const fotoY = tumbaY + 80;
@@ -215,35 +214,42 @@ function dibujarTumba(persona) {
     ctx.fill();
   }
   
-  // Texto
-  ctx.shadowBlur = 2;
+  // =============================================
+  // TEXTO - SIN SOMBRAS
+  // =============================================
+  // IMPORTANTE: Desactivar sombras para todo el texto
+  ctx.shadowBlur = 0;
+  ctx.shadowOffsetY = 0;
+  ctx.shadowColor = 'transparent';
+  
   ctx.textAlign = 'center';
   
-  // Nombre
-  ctx.fillStyle = '#D4AF37';
-  ctx.font = 'bold 22px "Times New Roman", serif';
+  // NOMBRE PRINCIPAL - Dorado y GRANDE
+  ctx.fillStyle = '#D4AF37';  // Dorado
+  ctx.font = 'bold 32px "Times New Roman", serif';  // Más grande
   let nombreMostrar = persona.nombre;
   if (persona.nombre.length > 20) {
     nombreMostrar = persona.nombre.substring(0, 18) + '...';
   }
   ctx.fillText(nombreMostrar, fotoX, tumbaY + 180);
   
-  // Fechas
+  // Fechas - Sin sombra
   ctx.font = '20px "Times New Roman", serif';
-  ctx.fillStyle = '#C0C0C0';
+  ctx.fillStyle = '#C0C0C0';  // Plateado
   const añoNac = persona.fecha_nac ? persona.fecha_nac.split('-')[0] : '?';
   const añoDef = persona.fecha_def ? persona.fecha_def.split('-')[0] : '?';
   ctx.fillText(`${añoNac} - ${añoDef}`, fotoX, tumbaY + 215);
   
-  // Epitafio
+  // Epitafio - Sin sombra
   ctx.font = 'italic 16px "Times New Roman", serif';
-  ctx.fillStyle = '#FFFFFF';
+  ctx.fillStyle = '#FFFFFF';  // Blanco
   let epitafio = persona.epitafio || 'En memoria';
   if (epitafio.length > 25) {
     epitafio = epitafio.substring(0, 23) + '...';
   }
   ctx.fillText(`"${epitafio}"`, fotoX, tumbaY + 245);
   
+  // Resetear sombras por si acaso
   ctx.shadowBlur = 0;
   ctx.shadowOffsetY = 0;
 }
