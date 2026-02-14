@@ -164,12 +164,12 @@ function dibujarTumba(persona) {
   ctx.shadowOffsetY = 5;
   
   // Rectángulo de la tumba
-  ctx.fillStyle = '#8B8B8B';
+  ctx.fillStyle = '#515151';
   ctx.beginPath();
   ctx.rect(tumbaX, tumbaY, tumbaAncho, tumbaAlto);
   ctx.fill();
   
-  ctx.strokeStyle = '#696969';
+  ctx.strokeStyle = '#4a4a4a';
   ctx.lineWidth = 3;
   ctx.strokeRect(tumbaX, tumbaY, tumbaAncho, tumbaAlto);
   
@@ -182,7 +182,7 @@ function dibujarTumba(persona) {
   ctx.arc(fotoX, fotoY, 45, 0, Math.PI * 2);
   ctx.fill();
   
-  ctx.strokeStyle = '#B8860B';
+  ctx.strokeStyle = '#ffb700';
   ctx.lineWidth = 3;
   ctx.beginPath();
   ctx.arc(fotoX, fotoY, 45, 0, Math.PI * 2);
@@ -225,7 +225,7 @@ function dibujarTumba(persona) {
   ctx.textAlign = 'center';
   
   // NOMBRE PRINCIPAL - Dorado y GRANDE
-  ctx.fillStyle = '#b18801';  // Dorado
+  ctx.fillStyle = '#ffde70';  // Dorado
   ctx.font = 'bold 64px "Times New Roman", serif';  // Más grande
   let nombreMostrar = persona.nombre;
   if (persona.nombre.length > 20) {
@@ -241,7 +241,7 @@ function dibujarTumba(persona) {
   ctx.fillText(`${añoNac} - ${añoDef}`, fotoX, tumbaY + 215);
   
   // Epitafio - Sin sombra
-  ctx.font = 'italic 16px "Times New Roman", serif';
+  ctx.font = 'italic 32px "Times New Roman", serif';
   ctx.fillStyle = '#FFFFFF';  // Blanco
   let epitafio = persona.epitafio || 'En memoria';
   if (epitafio.length > 25) {
