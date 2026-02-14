@@ -238,7 +238,7 @@ function dibujarTumba(persona) {
   ctx.fillStyle = '#ffffff';  // Plateado
   const añoNac = persona.fecha_nac ? persona.fecha_nac.split('-')[0] : '?';
   const añoDef = persona.fecha_def ? persona.fecha_def.split('-')[0] : '?';
-  ctx.fillText(`${añoNac} - ${añoDef}`, fotoX, tumbaY + 215);
+  ctx.fillText(`${añoNac} - ${añoDef}`, fotoX, tumbaY + 275);
   
   // Epitafio - Sin sombra
   ctx.font = 'italic 32px "Times New Roman", serif';
@@ -247,7 +247,7 @@ function dibujarTumba(persona) {
   if (epitafio.length > 25) {
     epitafio = epitafio.substring(0, 23) + '...';
   }
-  ctx.fillText(`"${epitafio}"`, fotoX, tumbaY + 245);
+  ctx.fillText(`"${epitafio}"`, fotoX, tumbaY + 310);
   
   // Resetear sombras por si acaso
   ctx.shadowBlur = 0;
