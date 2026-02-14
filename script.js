@@ -225,8 +225,8 @@ function dibujarTumba(persona) {
   ctx.textAlign = 'center';
   
   // NOMBRE PRINCIPAL - Dorado y GRANDE
-  ctx.fillStyle = '#D4AF37';  // Dorado
-  ctx.font = 'bold 32px "Times New Roman", serif';  // Más grande
+  ctx.fillStyle = '#b18801';  // Dorado
+  ctx.font = 'bold 64px "Times New Roman", serif';  // Más grande
   let nombreMostrar = persona.nombre;
   if (persona.nombre.length > 20) {
     nombreMostrar = persona.nombre.substring(0, 18) + '...';
@@ -234,8 +234,8 @@ function dibujarTumba(persona) {
   ctx.fillText(nombreMostrar, fotoX, tumbaY + 180);
   
   // Fechas - Sin sombra
-  ctx.font = '20px "Times New Roman", serif';
-  ctx.fillStyle = '#C0C0C0';  // Plateado
+  ctx.font = '42px "Times New Roman", serif';
+  ctx.fillStyle = '#ffffff';  // Plateado
   const añoNac = persona.fecha_nac ? persona.fecha_nac.split('-')[0] : '?';
   const añoDef = persona.fecha_def ? persona.fecha_def.split('-')[0] : '?';
   ctx.fillText(`${añoNac} - ${añoDef}`, fotoX, tumbaY + 215);
